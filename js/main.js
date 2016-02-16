@@ -1,6 +1,7 @@
 
 var wimg = $('.galimg').width();
-$('.galimg').height(wimg);
+var himg = $('.galimg').height(wimg).height();
+
 
 $('.galimg img').each(function(){
 
@@ -8,12 +9,24 @@ $('.galimg img').each(function(){
 	var h = $(this).height();
 
 	if(w > h){
-		$(this).addClass('landscape');
-		$('.landscape').css('text-align' ,'center');
+		$(this).addClass('landscape');	
 	}
 
-	if (h > w){
+	else if (h > w){
 		$(this).addClass('portrait');
 	}
 	
+	var nw = $(this).width();
+	var nh = $(this).height();
+
+	if (w > h){
+		$(this).css('left', '-' + ((nw-wimg)/2) + 'px')
+	}
+	
+	if (h > w){
+		$(this).css('bottom', ((nh-himg)/2) + 'px')
+	
+	console.log( (nw-wimg)/2, (nh-himg)/2);
+
+	};
 });
